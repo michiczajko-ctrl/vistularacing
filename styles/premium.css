@@ -1,0 +1,576 @@
+/*
+ * Warstwa premium motorsport. Czerń + ciemny błękit, jasny błękit tylko jako akcent, biały tekst.
+ * Jeden system kształtu: ścięty prawy górny róg (--notch) na przyciskach i kartach, reszta prosta.
+ */
+
+:root {
+  --notch: 1.25rem;
+}
+
+body {
+  background: var(--ink);
+  color: var(--fg);
+}
+
+/* nagłówki: szeroka, ciężka Archivo; drobne etykiety węższe */
+
+h1,
+h2 {
+  font-stretch: 118%;
+  font-weight: 800;
+}
+
+h3,
+h4 {
+  font-stretch: 108%;
+  font-weight: 800;
+}
+
+.btn,
+.site-nav a,
+.tower__head,
+.roadmap em,
+.badge,
+.legend__tag {
+  font-stretch: 100%;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  background: var(--blue-bright);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.kicker {
+  margin-bottom: 1.25rem;
+}
+
+/* nagłówek strony */
+
+.site-header__bar {
+  gap: 1rem;
+}
+
+.site-nav a {
+  padding-inline: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.brand span {
+  font-size: 0.9375rem;
+  letter-spacing: 0.06em;
+}
+
+@media (min-width: 64rem) and (max-width: 99.99rem) {
+  .site-header .brand span {
+    display: none;
+  }
+}
+
+.btn {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- hero ---------- */
+
+.hero h1 {
+  text-wrap: balance;
+}
+
+.hero__lead {
+  max-width: 34rem;
+}
+
+.hero__band {
+  border-top: 1px solid var(--hairline);
+}
+
+/* ---------- Vistula Vision Series: nagłówek po lewej, oś dat po prawej ---------- */
+
+.vvs {
+  background: var(--ink);
+}
+
+.vvs__layout {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.vvs .section-head {
+  margin-bottom: 0;
+}
+
+.vvs .section-head .btn {
+  margin-top: 2rem;
+}
+
+.vvs__timeline {
+  position: relative;
+  display: grid;
+  gap: 0;
+  padding-left: 0;
+}
+
+.vvs__timeline li {
+  display: grid;
+  gap: 0.5rem 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.vvs__timeline li:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.vvs__timeline time {
+  color: var(--blue-bright);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+.vvs__timeline strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  font-stretch: 108%;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.vvs__timeline p {
+  max-width: 36rem;
+  color: var(--muted);
+}
+
+@media (min-width: 52rem) {
+  .vvs__layout {
+    grid-template-columns: 5fr 6fr;
+  }
+
+  .vvs__timeline li {
+    grid-template-columns: 9rem 1fr;
+  }
+}
+
+/* ---------- Zarząd ---------- */
+
+.management-section {
+  background: var(--navy-900);
+}
+
+.management {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+}
+
+.person {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 0;
+  overflow: hidden;
+  background: var(--navy-950);
+  clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.person__photo {
+  display: block;
+  aspect-ratio: 4 / 4.8;
+  overflow: hidden;
+  background: var(--navy-800);
+}
+
+.person__photo picture,
+.person__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.person__photo img {
+  object-fit: cover;
+  object-position: center 12%;
+  filter: grayscale(0.85) contrast(1.05);
+  transition: transform 700ms var(--ease-out), filter 400ms var(--ease);
+}
+
+.person .avatar {
+  font-size: 2.5rem;
+  background: var(--navy-800);
+}
+
+.person__text {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem 1rem 1.25rem;
+}
+
+.person strong {
+  font-size: 1rem;
+  font-stretch: 100%;
+  line-height: 1.15;
+}
+
+.person__text > span {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+@media (hover: hover) {
+  button.person:hover {
+    transform: translateY(-4px);
+  }
+
+  button.person:hover .person__photo img {
+    filter: none;
+    transform: scale(1.05);
+  }
+}
+
+/* ---------- Hall of Fame: karty piętrzą się przy scrollu (sticky, czysty CSS) ---------- */
+
+.legend {
+  position: sticky;
+  top: calc(var(--header-h) + 1.5rem);
+  display: grid;
+  overflow: hidden;
+  background: var(--navy-900);
+  clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 0 100%);
+}
+
+.legend:nth-child(2) {
+  background: var(--navy-800);
+}
+
+.legend__photo {
+  position: relative;
+  min-height: 20rem;
+  background: var(--navy-800);
+}
+
+.legend__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+.legend__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgb(4 6 11 / 0.8));
+}
+
+.legend__photo b {
+  position: absolute;
+  z-index: 1;
+  left: 1.25rem;
+  bottom: 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 2rem + 8vw, 8rem);
+  font-stretch: 118%;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--text-light);
+}
+
+.legend__body {
+  display: grid;
+  align-content: center;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.legend__tag {
+  color: var(--blue-bright);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.legend h3 {
+  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.5rem);
+  font-stretch: 118%;
+  line-height: 0.98;
+}
+
+.legend__list {
+  display: grid;
+  gap: 1.5rem 2rem;
+}
+
+.legend__list li {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.legend__list strong {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-stretch: 100%;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.legend__list span {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+@media (min-width: 52rem) {
+  .legend {
+    grid-template-columns: 5fr 7fr;
+    min-height: min(34rem, 78dvh);
+  }
+
+  .legend__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 51.99rem) {
+  .legend {
+    position: relative;
+    top: 0;
+  }
+}
+
+/* ---------- karty kierowców ---------- */
+
+.driver {
+  position: relative;
+  background: var(--navy-950);
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 1rem) 0, 100% 1rem, 100% 100%, 0 100%);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.driver__photo {
+  background: var(--navy-800);
+}
+
+.driver__photo b {
+  background: var(--blue-bright);
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-stretch: 100%;
+  letter-spacing: 0.02em;
+}
+
+.driver__text {
+  background: linear-gradient(180deg, rgb(4 6 11 / 0), rgb(4 6 11 / 0.92) 65%);
+}
+
+.driver__text strong {
+  font-size: 0.9375rem;
+  font-stretch: 100%;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.driver.is-selected {
+  outline: 2px solid var(--blue-bright);
+}
+
+@media (hover: hover) {
+  .driver__photo img {
+    filter: grayscale(0.9) contrast(1.08);
+    transition: transform 700ms var(--ease-out), filter 450ms var(--ease);
+  }
+
+  .driver:hover .driver__photo img,
+  .driver:focus-within .driver__photo img {
+    filter: none;
+    transform: scale(1.05);
+  }
+}
+
+/* ---------- VRS Racecontrol ---------- */
+
+.racecontrol {
+  background: var(--navy-900);
+}
+
+.racecontrol__layout {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.roadmap {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.roadmap li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.125rem 1rem;
+  padding: 0 0 0 1rem;
+  border-left: 3px solid var(--blue-bright);
+}
+
+.roadmap strong {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-stretch: 100%;
+  text-transform: uppercase;
+}
+
+.roadmap span {
+  grid-column: 1;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+.roadmap em {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  align-self: center;
+  color: var(--blue-bright);
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.tower {
+  background: var(--ink);
+  clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+}
+
+.tower__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 2px solid var(--blue-bright);
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tower__live {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.tower__live i {
+  display: none;
+}
+
+.tower__rows li {
+  display: grid;
+  grid-template-columns: 2rem 3.5rem 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tower__rows li + li {
+  border-top: 1px solid var(--hairline);
+}
+
+.tower__rows b {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--blue-bright);
+}
+
+.tower__no {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+.tower__rows strong {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-stretch: 100%;
+  text-transform: uppercase;
+}
+
+.tower__rows small {
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.tower__rows li:first-child {
+  background: rgb(127 176 255 / 0.1);
+}
+
+@media (min-width: 64rem) {
+  .racecontrol__layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tower__rows li.is-flash {
+    animation: tower-flash 1200ms var(--ease-out);
+  }
+
+@keyframes tower-flash {
+    from {
+      background: rgb(127 176 255 / 0.5);
+      transform: translateX(0.5rem);
+    }
+
+    to {
+      background: transparent;
+      transform: none;
+    }
+}
+}
+
+/* ---------- historia ---------- */
+
+.event__date {
+  color: var(--blue-bright);
+}
+
+.event__copy h4 {
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.event__note {
+  border-left: 3px solid var(--blue-bright);
+}
+
+/* ---------- pola pod samochody: ciemny błękit ---------- */
+
+.stage,
+.programme__media {
+  background: radial-gradient(70% 85% at 50% 45%, rgb(61 165 255 / 0.32) 0%, #07142e 45%, #04060b 100%);
+}

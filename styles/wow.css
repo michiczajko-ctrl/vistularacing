@@ -1,0 +1,134 @@
+/*
+ * Ruch. Każda animacja ma jedno zadanie:
+ * intro lights-out = start wyścigu (narracja), pasek postępu = orientacja, słowa tytułu = hierarchia,
+ * parallax hero = głębia przy wejściu w stronę, ticker = jedyny na stronie, poświata i tilt = informacja zwrotna na hover.
+ * Scroll obsługuje CSS scroll-driven animations (bez nasłuchu zdarzeń scroll).
+ */
+
+.progress { position: absolute; inset: auto 0 0 0; height: 3px; background: rgb(255 255 255 / 0.08); pointer-events: none; }
+.progress i { display: block; height: 100%; background: var(--blue-bright); transform: scaleX(0); transform-origin: left; }
+@supports (animation-timeline: scroll()) {
+  .progress i { animation: progress-grow linear both; animation-timeline: scroll(root block); }
+  @keyframes progress-grow { to { transform: scaleX(1); } }
+}
+
+/* ticker: jedyny na stronie */
+.marquee { overflow: hidden; border-block: 1px solid var(--hairline); background: var(--ink); }
+.marquee__track { display: flex; width: max-content; }
+.marquee__track span { flex: none; padding: 1rem 2rem; color: var(--muted); font-family: var(--font-display); font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+.marquee__track b { margin-inline: 0.75rem; color: var(--blue-bright); font-weight: 400; }
+
+/* poświata za kursorem na kartach */
+.person::before, .legend::before, .tower::before, .driver::before {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0;
+  background: radial-gradient(14rem circle at var(--mx, 50%) var(--my, 50%), rgb(127 176 255 / 0.16), transparent 65%);
+  transition: opacity 300ms var(--ease);
+}
+@media (hover: hover) {
+  .person:hover::before, .legend:hover::before, .tower:hover::before, .driver:hover::before { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* ---- intro: start lights ---- */
+  html.is-intro { overflow: hidden; }
+  .intro { position: fixed; inset: 0; z-index: 300; display: grid; place-content: center; gap: 2rem; justify-items: center; background: var(--ink); animation: intro-lift 750ms cubic-bezier(0.76, 0, 0.24, 1) 2.15s forwards; }
+  .intro p { color: var(--muted); font-family: var(--font-display); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; animation: intro-fade 400ms ease 1.85s forwards; }
+  .intro__lights { display: flex; gap: clamp(0.5rem, 2vw, 1.25rem); padding: 1.25rem 1.5rem; background: var(--navy-950); }
+  .intro__lights i { width: clamp(2rem, 7vw, 4rem); height: clamp(2rem, 7vw, 4rem); border-radius: 50%; background: #0e1530; animation: light-on 160ms ease forwards, light-off 100ms ease 1.75s forwards; }
+  .intro__lights i:nth-child(1) { animation-delay: 0.25s, 1.75s; }
+  .intro__lights i:nth-child(2) { animation-delay: 0.5s, 1.75s; }
+  .intro__lights i:nth-child(3) { animation-delay: 0.75s, 1.75s; }
+  .intro__lights i:nth-child(4) { animation-delay: 1s, 1.75s; }
+  .intro__lights i:nth-child(5) { animation-delay: 1.25s, 1.75s; }
+  @keyframes light-on { to { background: var(--blue-bright); } }
+  @keyframes light-off { to { background: #0e1530; } }
+  @keyframes intro-fade { to { opacity: 0; } }
+  @keyframes intro-lift { to { transform: translateY(-100%); } }
+
+  /* ---- hero ---- */
+  .js-split .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+  .js-split .w > span { display: inline-block; transform: translateY(115%); transition: transform 1000ms var(--ease-out) calc(var(--i, 0) * 110ms + 120ms); }
+  .is-ready .js-split .w > span { transform: none; }
+  .js-split ~ .hero__lead, .js-split ~ .hero__actions { opacity: 0; transform: translateY(1.25rem); transition: opacity 800ms var(--ease-out) 0.9s, transform 800ms var(--ease-out) 0.9s; }
+  .js-split ~ .hero__actions { transition-delay: 1.1s; }
+  .is-ready .js-split ~ .hero__lead, .is-ready .js-split ~ .hero__actions { opacity: 1; transform: none; }
+
+  @supports (animation-timeline: scroll()) {
+    .hero__media { animation: hero-drift linear both; animation-timeline: scroll(root block); animation-range: 0 100vh; }
+    @keyframes hero-drift { to { transform: translateY(16vh) scale(1.06); } }
+    .hero__content { animation: hero-out linear both; animation-timeline: scroll(root block); animation-range: 0 70vh; }
+    @keyframes hero-out { to { opacity: 0; transform: translateY(-5vh); } }
+  }
+
+  /* ---- ticker ---- */
+  .marquee__track { animation: marquee 40s linear infinite; }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ---- tilt 3D kart i magnetyczne przyciski (wartości ustawia js/wow.js) ---- */
+  @media (hover: hover) and (pointer: fine) {
+    .driver { transition: transform 160ms ease-out; }
+    .driver:hover { transform: perspective(900px) translateY(-6px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+    .btn { translate: var(--bx, 0) var(--by, 0); transition: translate 200ms var(--ease-out), background-color var(--dur-fast) var(--ease); }
+  }
+}
+
+/* ======== Hero v2: kinowy ekran startowy ======== */
+.site-header { transition: background-color 300ms var(--ease), backdrop-filter 300ms var(--ease), border-color 300ms var(--ease); }
+.site-header:not(.is-scrolled) { background: linear-gradient(180deg, rgb(4 6 11 / 0.7), transparent); border-bottom-color: transparent; }
+html.is-locked .site-header:not(.is-scrolled) { background: var(--ink); }
+.site-header.is-scrolled { background: rgb(4 6 11 / 0.72); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4); }
+
+.hero { min-height: 100svh; }
+.hero__media::after { background:
+  radial-gradient(120% 90% at 70% 35%, transparent 40%, rgb(4 6 11 / 0.55) 100%),
+  linear-gradient(0deg, var(--ink) 0%, rgb(4 6 11 / 0.82) 22%, rgb(4 6 11 / 0) 62%),
+  linear-gradient(90deg, rgb(4 6 11 / 0.78) 0%, rgb(4 6 11 / 0.25) 55%, transparent 80%); }
+
+.hero__eyebrow { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.5rem; color: var(--blue-bright); font-family: var(--font-sans); font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+.hero__eyebrow::before { content: ''; width: 2.5rem; height: 1px; background: currentColor; }
+.hero h1 { font-weight: 900; font-stretch: 125%; text-shadow: 0 2px 40px rgb(4 6 11 / 0.5); overflow-wrap: break-word; }
+.hero__lead { max-width: 32rem; color: #d3dcf0; }
+.hero__content { padding-bottom: clamp(2.5rem, 6vw, 5rem); }
+
+/* pas statystyk: szkło zamiast klina */
+.hero__band { clip-path: none; margin-top: 0; padding-block: 1.5rem; background: rgb(4 6 11 / 0.55); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-top: 1px solid rgb(255 255 255 / 0.14); }
+.hero__band .stat dd { font-weight: 800; font-stretch: 112%; }
+.hero__band .stat dt { font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* scroll cue */
+.hero__scroll { position: absolute; right: var(--gutter); bottom: 9.5rem; display: none; width: 1.75rem; height: 4rem; justify-content: center; }
+.hero__scroll i { position: relative; width: 1px; height: 100%; background: rgb(255 255 255 / 0.25); overflow: hidden; }
+.hero__scroll i::after { content: ''; position: absolute; inset: 0 0 auto; height: 40%; background: var(--blue-bright); }
+@media (min-width: 64rem) { .hero__scroll { display: flex; } }
+
+.marquee__track span { font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem); font-stretch: 118%; font-weight: 800; opacity: 0.55; }
+.section-head h2, .vvs h2 { font-stretch: 122%; line-height: 0.95; letter-spacing: -0.025em; }
+.section { padding-block: clamp(5rem, 10vw, 9rem); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__media img { animation: hero-zoom 2600ms var(--ease-out) both; }
+  @keyframes hero-zoom { from { scale: 1.08; } to { scale: 1; } }
+  .hero__scroll i::after { animation: cue 1800ms var(--ease) infinite; }
+  @keyframes cue { from { transform: translateY(-100%); } to { transform: translateY(250%); } }
+}
+
+/* hero: CTA drugorzędny, pasek partnerów */
+.btn-ghost { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.5rem; border: 1px solid rgb(255 255 255 / 0.4); color: #fff; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.25s ease, border-color 0.25s ease; }
+.btn-ghost:hover { background: rgb(255 255 255 / 0.12); border-color: #fff; }
+.hero__partners { grid-column: 1 / -1; order: 3; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; }
+.hero__partners span { color: var(--muted); font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.hero__partners img { height: 1.375rem; width: auto; opacity: 0.85; }
+
+@media (prefers-reduced-motion: reduce) { .btn-ghost { transition: none; } }
+
+/* paleta: czerń + neon błękitny, biel jako drugi kolor, outline w nagłówkach */
+.outline { color: transparent; -webkit-text-stroke: 1.5px var(--blue-bright); text-shadow: var(--blue-neon-glow); }
+@supports not (-webkit-text-stroke: 1px #000) { .outline { color: var(--blue-bright); } }
+.btn-primary { box-shadow: var(--blue-neon-glow); }
+.btn-primary:hover { box-shadow: 0 0 36px rgb(61 165 255 / 0.8); }
+.stat dd { text-shadow: var(--blue-neon-glow); }
+.marquee__track b { text-shadow: var(--blue-neon-glow); }
+.stage__brand { min-height: 2.25rem; display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--muted); font-size: var(--fs-sm); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.stage__brand img { height: 2.25rem; width: auto; max-width: 7rem; filter: brightness(0) invert(1); }
+.fleet-item__brand { height: 1rem; width: 2.5rem; object-fit: contain; object-position: left; filter: brightness(0) invert(1); opacity: 0.8; vertical-align: -0.15em; margin-right: 0.4rem; }

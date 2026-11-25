@@ -1,0 +1,129 @@
+/* Design tokens. Jedyne miejsce z surowymi kolorami i skalami. Komponenty używają tylko zmiennych. */
+:root {
+  color-scheme: dark;
+
+  /* paleta bazowa = malowanie auta #777: błękit, biel, czerń, czerwona tablica numeru */
+  --ink: #04060b;
+  --navy-950: #05070d;
+  --navy-900: #070c1a;
+  --navy-800: #060a14;
+  --navy-700: #0c2bb0;
+  --blue: #0c2bb0;
+  --blue-bright: #3da5ff;
+  --blue-neon-glow: 0 0 24px rgb(61 165 255 / 0.55);
+  /* brak czerwieni: stare nazwy --red wskazują jasny błękit akcentu */
+  --red: #7fb0ff;
+  --red-deep: #a9ccff;
+  --sky-100: #eef1f7;
+  --sky-200: #d3dcff;
+  --podium-silver: #d5dbe6;
+  --podium-bronze: #e0a070;
+  --paper: #ffffff;
+  --mist: #eef1f7;
+  --text-dark: #0a0c12;
+  --text-light: #ffffff;
+  --muted-on-light: #4d5870;
+  --muted-on-dark: #b4bed3;
+  --line-on-light: #7e8ba0;
+  --line-on-dark: #5f6b85;
+
+  /* typografia: Archivo (szeroka, ciężka) = głos zespołu: nagłówki, liczby, etykiety; Geist = tekst ciągły */
+  --font-sans: 'Geist', 'Geist Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-display: 'Druk Wide Trial', 'Archivo', 'Arial Black', var(--font-sans);
+  --font-numeral: var(--font-display);
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-body: 1rem;
+  --fs-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
+  --fs-h3: clamp(1.625rem, 1.2rem + 1.4vw, 2.5rem);
+  --fs-h2: clamp(2.25rem, 0.9rem + 4.6vw, 5.5rem);
+  --fs-hero: clamp(3rem, 0.4rem + 9.2vw, 8.75rem);
+  --lh-tight: 0.92;
+  --lh-snug: 1.2;
+  --lh-body: 1.62;
+  --track-display: -0.03em;
+  --track-title: 0;
+  --track-label: 0.06em;
+
+  /* układ */
+  --container: 80rem;
+  --container-text: 40rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-pad: clamp(4.5rem, 9vw, 8rem);
+  --cut: clamp(1.5rem, 4vw, 4rem);
+  --chamfer: 0.75rem;
+  --header-h: 4rem;
+  --r-sm: 0;
+  --r-md: 0;
+  --r-lg: 0;
+  --r-pill: 0;
+  --tap: 2.75rem;
+
+  /* ruch: przejścia stanu; animacje sekcji w styles/motion.css */
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* warstwy */
+  --z-header: 100;
+  --z-menu: 110;
+  --z-toast: 120;
+
+  /* półprzezroczyste warstwy i cienie */
+  --glass: rgb(4 6 11 / 0.94);
+  --glass-line: rgb(255 255 255 / 0.14);
+  --scrim: rgb(8 9 13 / 0.82);
+  --hero-scrim: linear-gradient(75deg, rgb(8 9 13 / 0.9) 0%, rgb(8 9 13 / 0.45) 42%, rgb(8 9 13 / 0) 70%), linear-gradient(0deg, rgb(8 9 13 / 0.75) 0%, rgb(8 9 13 / 0) 45%);
+  --shadow-lg: 0 24px 60px rgb(8 9 13 / 0.35);
+  --danger: #b3261e;
+
+  /* motyw domyślny (jasny) */
+  --bg: var(--ink);
+  --fg: var(--text-light);
+  --muted: var(--muted-on-dark);
+  --line: var(--line-on-dark);
+  --hairline: rgb(255 255 255 / 0.18);
+  --surface: #0b1020;
+  --accent: var(--blue-bright);
+  --accent-hover: #b3d0ff;
+  --on-accent: #04060b;
+  --focus: var(--blue-bright);
+  --cta: var(--red);
+  --cta-hover: var(--red-deep);
+  --on-cta: #04060b;
+}
+
+/* Motywy sekcji. Tylko czerń (ink) i ciemny błękit (navy); paper/mist to aliasy, żeby HTML się nie zmieniał. */
+[data-theme='ink'], [data-theme='paper'],
+[data-theme='navy'], [data-theme='mist'] {
+  color-scheme: dark;
+  --fg: var(--text-light);
+  --hairline: rgb(255 255 255 / 0.18);
+  --muted: var(--muted-on-dark);
+  --line: var(--line-on-dark);
+}
+[data-theme='ink'], [data-theme='paper'] {
+  --accent: var(--blue-bright);
+  --accent-hover: #b3d0ff;
+  --on-accent: #04060b;
+  --focus: var(--blue-bright);
+  --cta: var(--blue-bright);
+  --cta-hover: #b3d0ff;
+  --on-cta: #04060b;
+}
+[data-theme='navy'], [data-theme='mist'] {
+  --muted: #c3d4ff;
+  --line: #6f8fe6;
+  --accent: var(--blue-bright);
+  --accent-hover: #ffffff;
+  --on-accent: #04060b;
+  --focus: #ffffff;
+  --cta: #ffffff;
+  --cta-hover: #c3d4ff;
+  --on-cta: #04060b;
+}
+[data-theme='ink'] { --bg: var(--ink); --surface: #0b1020; }
+[data-theme='paper'] { --bg: #05070d; --surface: #0a0f1c; }
+[data-theme='navy'] { --bg: var(--navy-900); --surface: var(--navy-800); }
+[data-theme='mist'] { --bg: var(--navy-800); --surface: var(--navy-900); }

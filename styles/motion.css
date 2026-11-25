@@ -1,0 +1,178 @@
+/*
+ * Animacje. Wszystko w (prefers-reduced-motion: no-preference), więc przy reduced-motion strona zostaje
+ * w stanie końcowym. Efekty przewijania (scroll-driven) tylko tam, gdzie przeglądarka je wspiera.
+ */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.06);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tray-in {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hero-media-out {
+  to {
+    transform: translateY(14%) scale(1.06);
+  }
+}
+
+@keyframes wipe-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 -2% 0 0);
+  }
+}
+
+@keyframes band-in {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* hero: jedno zorganizowane wejście — zdjęcie osiada, tytuł wjeżdża spod maski, pas liczb wsuwa się od dołu */
+
+  .hero__media picture {
+    animation: settle 1800ms var(--ease-out) both;
+  }
+
+  .hero h1 {
+    animation: wipe-in 1100ms var(--ease-out) 150ms both;
+  }
+
+  .hero__lead,
+  .hero__actions {
+    animation: rise 900ms var(--ease-out) 450ms both;
+  }
+
+  .hero__actions {
+    animation-delay: 580ms;
+  }
+
+  .hero__band {
+    animation: band-in 900ms var(--ease-out) 300ms both;
+  }
+
+  /* odsłanianie przy przewijaniu: klasy nadaje js/motion.js tylko elementom poniżej pierwszego ekranu */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition: opacity 600ms var(--ease-out), transform 800ms var(--ease-out);
+    transition-delay: calc(var(--reveal-i, 0) * 60ms);
+  }
+
+  .reveal.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* nagłówek sekcji wjeżdża spod maski, jak naklejany pas malowania */
+
+  .section-head.reveal h2 {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1000ms var(--ease-out) 120ms;
+  }
+
+  .section-head.reveal.is-revealed h2 {
+    clip-path: inset(0 -2% 0 0);
+  }
+
+  /* stany interfejsu */
+
+  .dialog[open] {
+    animation: dialog-in 320ms var(--ease-out);
+  }
+
+  .dialog[open]::backdrop {
+    animation: fade-in 320ms ease-out;
+  }
+
+  .lightbox[open] {
+    animation: fade-in 260ms ease-out;
+  }
+
+  .btn:active,
+  .icon-btn:active,
+  .pills button:active,
+  .fleet-item:active {
+    transform: scale(0.97);
+  }
+}
+
+@supports (animation-timeline: view()) {
+@media (prefers-reduced-motion: no-preference) {
+    /* hero przy wyjściu z ekranu: tło przesuwa się wolniej (parallax) */
+
+    .hero {
+      view-timeline: --hero block;
+    }
+
+    .hero__media {
+      animation: hero-media-out linear both;
+      animation-timeline: --hero;
+      animation-range: exit 0% exit 100%;
+    }
+}
+}
+
+@media print {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
