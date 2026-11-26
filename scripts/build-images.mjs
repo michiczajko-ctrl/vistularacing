@@ -9,7 +9,7 @@ import { gallery } from '../data/archive.js';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outputRoot = path.join(root, 'assets', 'optimized');
 
-const sources = new Set(['assets/hero-vistula-racing.png']);
+const sources = new Set(['assets/hero-vistula-lemans.jpg']);
 cars.forEach((car) => {
   sources.add(car.image);
   sources.add(car.heroImage);
@@ -18,7 +18,7 @@ cars.forEach((car) => {
   car.liveries.forEach((livery) => sources.add(livery.image));
 });
 drivers.forEach((driver) => {
-  sources.add(driver.photo);
+  if (driver.photo) sources.add(driver.photo);
   if (driver.showcaseImage) sources.add(driver.showcaseImage);
 });
 gallery.forEach((item) => {

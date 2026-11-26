@@ -392,10 +392,6 @@ h4 {
   letter-spacing: 0;
 }
 
-.driver.is-selected {
-  outline: 2px solid var(--blue-bright);
-}
-
 @media (hover: hover) {
   .driver__photo img {
     filter: grayscale(0.9) contrast(1.08);
@@ -529,9 +525,9 @@ h4 {
   background: rgb(127 176 255 / 0.1);
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 80rem) {
   .racecontrol__layout {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 
@@ -570,7 +566,6 @@ h4 {
 
 /* ---------- pola pod samochody: ciemny błękit ---------- */
 
-.stage,
-.programme__media {
+.stage {
   background: radial-gradient(70% 85% at 50% 45%, rgb(61 165 255 / 0.32) 0%, #07142e 45%, #04060b 100%);
 }

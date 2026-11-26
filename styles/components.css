@@ -418,13 +418,6 @@
   letter-spacing: 0.02em;
 }
 
-.roster__row .avatar {
-  width: 3rem;
-  height: 3rem;
-  flex: none;
-  font-size: 1.125rem;
-}
-
 .driver__photo .avatar {
   aspect-ratio: auto;
   align-items: start;

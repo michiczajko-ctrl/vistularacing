@@ -1,7 +1,7 @@
 import { $, $$, lock, unlock } from './dom.js';
 import { t } from './i18n.js';
 
-const desktop = window.matchMedia('(min-width: 64rem)');
+const desktop = window.matchMedia('(min-width: 80rem)');
 
 /** Ukrywa linki do sekcji, które są schowane (brak danych), żeby nie prowadziły donikąd. */
 export function syncNavLinks() {

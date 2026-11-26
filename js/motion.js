@@ -30,7 +30,7 @@ export function initAnchorNavigation() {
 
 const REVEAL = [
   '.section-head', '.event', '.history__outro', '.stage', '.fleet__list',
-  '.management', '.programme', '.result', '.tile', '.partner',
+  '.management', '.result', '.tile', '.partner',
   '.recruitment__form', '.drivers__grid > li', '.management > .person', '.vvs__steps > li', '.legend', '.roadmap > li', '.tower'
 ].join(', ');
 const MAX_STAGGER = 6;

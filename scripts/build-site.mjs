@@ -35,7 +35,7 @@ const fallback = (lang) => {
         <h3>${L.hist}</h3>
         ${chapters.map((chapter) => `<h4>${esc(chapter.years)} - ${esc(chapter.title)}</h4>${list(chapter.events.map((event) => `<strong>${esc(event.date)}: ${esc(event.title)}.</strong> ${esc(event.body)}`))}`).join('')}
         <h3>${L.team}</h3>
-        ${list(drivers.map((driver) => `${esc(driver.name)} - #${esc(driver.number)}`))}
+        ${list(drivers.map((driver) => (driver.number === '-' ? esc(driver.name) : `${esc(driver.name)} - #${esc(driver.number)}`)))}
         <h3>${L.fleet}</h3>
         ${list(cars.map((car) => `${esc(car.name)} #${esc(car.number)}`))}
         <h3>${L.results}</h3>
@@ -97,12 +97,11 @@ const PAIRS = [
   ['aria-label="Samochody floty"', 'aria-label="Fleet cars"'],
   ['Włącz JavaScript, aby uruchomić interaktywny showroom floty.', 'Enable JavaScript to run the interactive fleet showroom.'],
   /* zespół */
-  ['Jeden zespół.<br>Cztery programy.', 'One team.<br>Four programmes.'],
-  ['Samochód prowadzi opowieść o programie. Poznaj kadrę każdej klasy i otwórz profil kierowcy.', 'The car tells the story of the programme. Meet the roster of each class and open a driver profile.'],
-  ['aria-label="Wybierz program"', 'aria-label="Choose a programme"'],
-  ['<h3>Wszyscy kierowcy</h3>', '<h3>All drivers</h3>'],
-  ['Zaznacz dwie osoby, aby zestawić ich profile obok siebie.', 'Select two people to compare their profiles side by side.'],
-  ['aria-label="Filtruj kierowców"', 'aria-label="Filter drivers"'],
+  ['Nasi<br>kierowcy.', 'Our<br>drivers.'],
+  ['aria-label="Działy technologiczne"', 'aria-label="Technology divisions"'],
+  ['VR Technologies to wewnętrzny dział oprogramowania, technologii i infrastruktury Vistula Racing. Rozwija VRS Race Control, VRT Pitwall i VRT-SITE, żeby decyzje w wyścigu i organizacja serii opierały się na danych.', 'VR Technologies is Vistula Racing’s internal software, technology and infrastructure division. It develops VRS Race Control, VRT Pitwall and VRT-SITE so that race decisions and series organisation rest on data.'],
+  ['aria-label="Filtruj składy"', 'aria-label="Filter squads"'],
+  ['Ludzie za kierownicą Vistuli. Otwórz profil, żeby zobaczyć rolę, numer i wyniki kierowcy.', 'The people behind the wheel at Vistula. Open a profile to see a driver’s role, number and results.'],
   /* wyniki, sezon, transmisje, galeria, partnerzy */
   ['Wyniki tworzą<br><span class="outline">archiwum.</span>', 'Results build<br><span class="outline">the archive.</span>'],
   ['Wynik to praca całej załogi. Najważniejsze tytuły oglądaj w gablocie zespołu.', 'A result is the work of the whole crew. See the most important titles in the team cabinet.'],
@@ -126,7 +125,9 @@ const PAIRS = [
   ['<strong>Prolog na Fuji</strong><p>Pierwszy wyścig serii. Na starcie kierowcy Hypercar i GT3.</p>', '<strong>Fuji prologue</strong><p>The first race of the series. Hypercar and GT3 drivers on the grid.</p>'],
   ['<strong>Pierwszy pełny sezon</strong><p>Kalendarz, klasy i zasady ogłosimy na Discordzie i na kanale serii.</p>', '<strong>First full season</strong><p>We will announce the calendar, classes and rules on Discord and on the series channel.</p>'],
   ['Zarząd<br>zespołu.', 'Team<br>management.'],
-  ['Struktura, strategia i kierunek zespołu. Kierowców i programy znajdziesz niżej.', 'Structure, strategy and direction of the team. Drivers and programmes are below.'],
+  ['>Kierownictwo</h4>', '>Leadership</h4>'],
+  ['>Inżynieria</h4>', '>Engineering</h4>'],
+  ['Struktura, strategia i kierunek zespołu. Kierowców znajdziesz niżej.', 'Structure, strategy and direction of the team. Drivers are below.'],
   ['<span class="badge">W produkcji</span>', '<span class="badge">In production</span>'],
   ['VRS<br>Racecontrol.', 'VRS<br>Racecontrol.'],
   ['Tworzymy VRS Racecontrol, aplikację do prowadzenia wyścigów: sędziowanie, wyniki na żywo i narzędzia dla organizatorów.', 'We are building VRS Racecontrol, an app for running races: stewarding, live results and tools for organisers.'],

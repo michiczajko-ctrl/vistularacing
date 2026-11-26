@@ -19,7 +19,7 @@ export const site = Object.freeze({
   foundedLabel: '26.07.2025',
   hero: {
     kicker: 'Polish endurance simracing team',
-    title: ['Built for', 'the long run.'],
+    title: ['Every lap.', 'As one.'],
     lead: 'Dane, strategia i wspólna odpowiedzialność zamieniają tempo w wynik - stint po stincie, sezon po sezonie.',
     primaryCta: { label: 'Poznaj Vistula Racing', href: '#history' },
     secondaryCta: { label: 'Wejdź do archiwum', href: '#fleet' }
@@ -30,14 +30,45 @@ export const site = Object.freeze({
     championships: 2,
     races: null
   },
-  management: [
-    { name: 'Michał Czajkowski', role: 'Founder & Team Principal', driverId: 'michal-czajkowski' },
-    { name: 'Jakub Kardas', role: 'Deputy Team Principal', driverId: 'jakub-kardas' },
-    { name: 'Grzegorz Zelga', role: 'Former Team Principal · Race Engineer', driverId: null },
-    { name: 'Krystian Ogorzelski', role: 'Management', driverId: 'krystian-ogorzelski' },
-    { name: 'Wiktor Kocięda', role: 'Driver & Management', driverId: 'wiktor-kocieda' },
-    { name: 'Przemek Fabiś', role: 'Driver & Management', driverId: 'przemek-fabis' },
-    { name: 'Stephen Fraser', role: 'Team Management', driverId: 'stephen-fraser' }
+  /** Zarząd: klucz = siatka data-staff w index.html. */
+  staff: {
+    lead: [
+      { name: 'Michał Czajkowski', role: 'Founder & Team Principal', driverId: 'michal-czajkowski' },
+      { name: 'Jakub Kardas', role: 'Deputy Team Principal', driverId: 'jakub-kardas' }
+    ],
+    engineering: [
+      { name: 'Grzegorz Zelga', role: 'Former Team Principal · Race Engineer', driverId: null }
+    ],
+    management: [
+      { name: 'Krystian Ogorzelski', role: 'Management', driverId: 'krystian-ogorzelski' },
+      { name: 'Wiktor Kocięda', role: 'Driver & Management', driverId: 'wiktor-kocieda' },
+      { name: 'Przemek Fabiś', role: 'Driver & Management', driverId: 'przemek-fabis' },
+      { name: 'Stephen Fraser', role: 'Team Management', driverId: 'stephen-fraser' }
+    ],
+    lmu: [
+      { name: 'Michał Czajkowski', role: 'LMU Director', driverId: 'michal-czajkowski' },
+      { name: 'Bartłomiej Fijałkowski', role: 'LMU V-Director', driverId: 'bartlomiej-fijalkowski' }
+    ],
+    iracing: [
+      { name: 'Przemek Fabiś', role: 'iRacing Director', driverId: 'przemek-fabis' }
+    ],
+    ac: [
+      { name: 'Jakub Kardas', role: 'Assetto Corsa Director', driverId: 'jakub-kardas' }
+    ],
+    vvs: [
+      { name: 'Wojciech Niemiec', role: 'Management VVS', driverId: 'wojciech-niemiec' },
+      { name: 'Wiktor Nejfi', role: 'Management VVS', driverId: 'wiktor-nejfi' },
+      { name: 'Marcel Lipski', role: 'Management VVS', driverId: 'marcel-lipski' },
+      { name: 'Piotr Kochanowicz', role: 'Management VVS i M-Helper', driverId: 'piotr-kochanowicz' }
+    ],
+    media: [
+      { name: 'Igor Kruk', role: 'Media', driverId: 'igor-kruk' },
+      { name: 'Błażej Bogucki', role: 'Designer', driverId: 'blazej-bogucki' }
+    ]
+  },
+  technologies: [
+    { name: 'Michał Czajkowski', role: 'VR Technologies', driverId: 'michal-czajkowski' },
+    { name: 'Juliusz Kiwalski', role: 'VR Technologies', driverId: 'juliusz-kiwalski' }
   ],
   contact: {
     email: 'Vistularacing@gmail.com',

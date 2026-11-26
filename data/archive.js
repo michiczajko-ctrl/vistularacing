@@ -63,9 +63,9 @@ export const achievements = [
 
 /** Wyniki sezonu 2026 przekazane przez zespół. Nie służą do wyliczania oficjalnych statystyk. */
 export const raceResults = [
-  { id: 'lm24-hy', event: 'Le Mans 24H 2026', class: 'Hypercar', result: 'P1', people: ['Skład do potwierdzenia'] },
-  { id: 'lm24-gt3', event: 'Le Mans 24H 2026', class: 'LMGT3', result: 'P1', people: ['Skład do potwierdzenia'] },
-  { id: 'lm24-lmp2', event: 'Le Mans 24H 2026', class: 'LMP2', result: 'P2', people: ['Jakub Kardas'] },
+  { id: 'lm24-hy', event: 'Le Mans 24H 2026', class: 'Hypercar', result: 'P1', people: ['Piotr Kochanowicz', 'Wojciech Niemiec', 'Juliusz Kiwalski'] },
+  { id: 'lm24-gt3', event: 'Le Mans 24H 2026', class: 'LMGT3', result: 'P1', people: ['Przemek Fabiś', 'Wiktor Kocięda', 'Karlo Kruhan', 'Mateusz Mirończuk'] },
+  { id: 'lm24-lmp2', event: 'Le Mans 24H 2026', class: 'LMP2', result: 'P2', people: ['Jakub Kardas', 'Michał Czajkowski'] },
   { id: 'lm24-p4', event: 'Le Mans 24H 2026', class: 'Hypercar', result: 'P4', people: ['Antoni Hordziewicz', 'Julian Moryń', 'Ondra Fort', 'Kajetan Jaszczak', 'Wiktor Siedlecki'] },
   { id: 'imola-4h-gt3', event: 'Imola 4H', class: 'LMGT3', result: 'P1', people: ['Krystian Ogorzelski', 'Wiktor Kocięda'] },
   { id: 'portimao-4h-lmp2', event: 'Portimão 4H', class: 'LMP2', result: 'P3', people: ['Bartłomiej Fijałkowski', 'Bartek Smolak'] },
@@ -133,5 +133,6 @@ export const partners = [
   { id: 'advanced-gg', name: 'ADVANCED.gg', logo: 'assets/partners/advanced-gg.png', url: 'https://advanced.gg', featured: true, description: 'Marka suplementów i napojów dla graczy: focus, energia, nawodnienie i sen. „Fuel Better. Push Further. Be ADVANCED."' },
   { id: 'instant-gaming', name: 'Instant Gaming', logo: 'assets/partners/instant-gaming.png', url: 'https://www.instant-gaming.com/en/', description: 'Oficjalny drugi sponsor Vistula Racing.' },
   { id: 'simline', name: 'Simline.eu', logo: 'assets/partners/simline_logo.png', url: 'https://simline.eu/pl/strona-glowna', description: 'Wsparcie przygotowań zespołu i dostęp do RC Pro+ w Le Mans Ultimate.', storyId: 'archive-simline-partnership' },
-  { id: 'vistula-technologies', name: 'Vistula Racing Technologies', logo: 'assets/brand/vr_logo.png', url: null, internal: true, storyId: 'archive-technology', description: 'Wewnętrzny dział oprogramowania, technologii i infrastruktury: VRS Race Control, VRT Pitwall i VRT-SITE.' }
+  { id: 'vistula-technologies', name: 'Vistula Racing Technologies', logo: 'assets/brand/vr_logo.png', url: null, internal: true, storyId: 'archive-technology', description: 'Wewnętrzny dział oprogramowania, technologii i infrastruktury: VRS Race Control, VRT Pitwall i VRT-SITE.' },
+  { id: '237-league', name: '237 League', logo: 'assets/partners/237-league.png', url: 'https://237league.pl', description: 'Partner ligowy. 237 League to polska liga simracingowa dla kierowców, którzy chcą ścigać się twardo, ale czysto. Organizuje m.in. Polish Endurance Series.' }
 ];

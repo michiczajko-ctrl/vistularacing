@@ -1,6 +1,7 @@
 import { bestImageSource, pictureMarkup } from './media.js';
 import { bindDialog, openDialog } from './dom.js';
 import { t } from './i18n.js';
+import { squads } from '../data/squads.js';
 import { escapeHtml, safeUrl } from './safe.js';
 
 const hasValue = (value) => value !== null && value !== undefined && value !== '';
@@ -8,13 +9,12 @@ const statLabel = () => ({ races: t('Wyścigi'), starts: t('Starty'), wins: t('Z
 
 /** Profil auta, kierowcy lub trofeum w natywnym <dialog>. Zdjęcia z galerii otwierają lightbox nad profilem. */
 export class DetailOverlay {
-  constructor(dialog, { cars, drivers, achievements, carClassLabels, programLabels }) {
+  constructor(dialog, { cars, drivers, achievements, carClassLabels }) {
     this.dialog = dialog;
     this.cars = cars;
     this.drivers = drivers;
     this.achievements = achievements;
     this.carClassLabels = carClassLabels;
-    this.programLabels = programLabels;
     if (!dialog) return;
     bindDialog(dialog);
     dialog.querySelector('[data-detail-close]').addEventListener('click', () => dialog.close());
@@ -85,7 +85,7 @@ export class DetailOverlay {
       return { image: item.showroomImage || item.heroImage, cutout: Boolean(item.showroomImage), alt: `${item.name} ${t('w barwach Vistula Racing')}`, typeLabel: t('Flota Vistula'), title: item.name, subtitle: `${this.carClassLabels[item.class]} · #${item.number}` };
     }
     if (type === 'driver') {
-      return { image: item.showcaseImage || item.photo || 'assets/brand/vr_logo.png', cutout: Boolean(item.showcaseImage), alt: `${t('Portret kierowcy')} ${item.name}`, typeLabel: t('Zespół Vistula'), title: item.name, subtitle: `${item.role} · #${item.number}` };
+      return { image: item.showcaseImage || item.photo || 'assets/brand/vr_logo.png', cutout: Boolean(item.showcaseImage), alt: `${t('Portret kierowcy')} ${item.name}`, typeLabel: t('Zespół Vistula'), title: item.name, subtitle: item.number === '-' ? item.role : `${item.role} · #${item.number}` };
     }
     return { image: item.images[0] || 'assets/generated/trophy-race-small.webp', cutout: item.tier === 'minor', alt: item.tier === 'minor' ? `${t('Trofeum za')} ${item.title}` : `${t('Materiał archiwalny')}: ${item.title}`, typeLabel: t('Archiwum wyników'), title: item.title, subtitle: `${item.year} · ${item.type}` };
   }
@@ -124,16 +124,16 @@ export class DetailOverlay {
   }
 
   getDriverPanels(driver) {
-    const programs = driver.programs.map((program) => `${this.programLabels[program.id]} · ${program.tier.toUpperCase()} · ${program.number === 'TBA' ? 'TBA' : `#${program.number}`}`);
+    const lineups = squads.flatMap((sim) => sim.teams.filter((team) => team.drivers.includes(driver.id)).map((team) => `${sim.short} · ${t(team.name)}`));
     const panels = [{
       id: 'overview',
       label: t('Przegląd'),
-      content: `<dl class="facts">
-        ${this.fact(t('Numer'), `#${escapeHtml(driver.number)}`)}
+      content: `${driver.transfer ? `<p class="prose detail__transfer" data-transfer="${escapeHtml(driver.id)}">${escapeHtml(t(driver.transfer.note))}</p>` : ''}<dl class="facts">
+        ${driver.number === '-' ? '' : this.fact(t('Numer'), `#${escapeHtml(driver.number)}`)}
         ${driver.nationality ? this.fact(t('Narodowość'), escapeHtml(driver.nationality)) : ''}
         ${this.fact(t('Rola'), escapeHtml(driver.role))}
         ${driver.joined ? this.fact(t('Dołączył'), escapeHtml(driver.joined)) : ''}
-        ${this.fact(t('Programy'), programs.map(escapeHtml).join('<br>'), true)}
+        ${lineups.length ? this.fact(t('Skład'), lineups.map(escapeHtml).join('<br>'), true) : ''}
       </dl>`
     }];
     if (Object.values(driver.statistics).some(hasValue)) panels.push({ id: 'statistics', label: t('Statystyki'), content: this.renderStatistics(driver.statistics) });

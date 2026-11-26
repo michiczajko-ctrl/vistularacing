@@ -432,54 +432,6 @@ export const imageManifest = {
       }
     ]
   },
-  "assets/drivers/avatar_bialczyk.jpg": {
-    "width": 916,
-    "height": 1024,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/avatar_bialczyk-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_bialczyk-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/avatar_bialczyk-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_bialczyk-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/avatar_bogucki.jpg": {
-    "width": 1024,
-    "height": 919,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/avatar_bogucki-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_bogucki-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/avatar_bogucki-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_bogucki-800.webp",
-        "width": 800
-      }
-    ]
-  },
   "assets/drivers/avatar_czajkowski.jpg": {
     "width": 1024,
     "height": 846,
@@ -528,30 +480,6 @@ export const imageManifest = {
       }
     ]
   },
-  "assets/drivers/avatar_fabis.jpg": {
-    "width": 896,
-    "height": 1024,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/avatar_fabis-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_fabis-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/avatar_fabis-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_fabis-800.webp",
-        "width": 800
-      }
-    ]
-  },
   "assets/drivers/avatar_kardas.jpg": {
     "width": 1024,
     "height": 999,
@@ -572,78 +500,6 @@ export const imageManifest = {
       },
       {
         "src": "assets/optimized/drivers/avatar_kardas-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/avatar_kocieda.jpg": {
-    "width": 947,
-    "height": 971,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/avatar_kocieda-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_kocieda-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/avatar_kocieda-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_kocieda-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/avatar_kosa.jpg": {
-    "width": 920,
-    "height": 1024,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/avatar_kosa-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_kosa-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/avatar_kosa-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_kosa-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/avatar_koziol.jpg": {
-    "width": 916,
-    "height": 994,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/avatar_koziol-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_koziol-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/avatar_koziol-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/avatar_koziol-800.webp",
         "width": 800
       }
     ]
@@ -720,54 +576,6 @@ export const imageManifest = {
       }
     ]
   },
-  "assets/drivers/bartlomiej-fijalkowski.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/bartlomiej-fijalkowski-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/bartlomiej-fijalkowski-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/bartlomiej-fijalkowski-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/bartlomiej-fijalkowski-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/charlie-mcguire.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/charlie-mcguire-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/charlie-mcguire-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/charlie-mcguire-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/charlie-mcguire-800.webp",
-        "width": 800
-      }
-    ]
-  },
   "assets/drivers/filip-mazgaj.jpg": {
     "width": 960,
     "height": 960,
@@ -788,150 +596,6 @@ export const imageManifest = {
       },
       {
         "src": "assets/optimized/drivers/filip-mazgaj-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/jakub-ciecierski.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/jakub-ciecierski-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/jakub-ciecierski-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/jakub-ciecierski-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/jakub-ciecierski-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/kacper-cyganowski.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/kacper-cyganowski-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/kacper-cyganowski-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/kacper-cyganowski-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/kacper-cyganowski-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/kacper-slabisz.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/kacper-slabisz-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/kacper-slabisz-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/kacper-slabisz-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/kacper-slabisz-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/leon-krzywda.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/leon-krzywda-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/leon-krzywda-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/leon-krzywda-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/leon-krzywda-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/lukasz-okrzesik.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/lukasz-okrzesik-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/lukasz-okrzesik-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/lukasz-okrzesik-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/lukasz-okrzesik-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/marcel-was.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/marcel-was-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/marcel-was-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/marcel-was-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/marcel-was-800.webp",
         "width": 800
       }
     ]
@@ -960,30 +624,6 @@ export const imageManifest = {
       }
     ]
   },
-  "assets/drivers/mateusz-kramarczyk.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/mateusz-kramarczyk-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/mateusz-kramarczyk-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/mateusz-kramarczyk-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/mateusz-kramarczyk-800.webp",
-        "width": 800
-      }
-    ]
-  },
   "assets/drivers/michal-lodomir.jpg": {
     "width": 960,
     "height": 960,
@@ -1008,27 +648,295 @@ export const imageManifest = {
       }
     ]
   },
-  "assets/drivers/oliwier-stuglik.jpg": {
-    "width": 960,
-    "height": 960,
+  "assets/drivers/photo-bartek-smolak.jpg": {
+    "width": 800,
+    "height": 1000,
     "avif": [
       {
-        "src": "assets/optimized/drivers/oliwier-stuglik-480.avif",
+        "src": "assets/optimized/drivers/photo-bartek-smolak-480.avif",
         "width": 480
       },
       {
-        "src": "assets/optimized/drivers/oliwier-stuglik-800.avif",
+        "src": "assets/optimized/drivers/photo-bartek-smolak-800.avif",
         "width": 800
       }
     ],
     "webp": [
       {
-        "src": "assets/optimized/drivers/oliwier-stuglik-480.webp",
+        "src": "assets/optimized/drivers/photo-bartek-smolak-480.webp",
         "width": 480
       },
       {
-        "src": "assets/optimized/drivers/oliwier-stuglik-800.webp",
+        "src": "assets/optimized/drivers/photo-bartek-smolak-800.webp",
         "width": 800
+      }
+    ]
+  },
+  "assets/drivers/photo-bartlomiej-fijalkowski.jpg": {
+    "width": 800,
+    "height": 1000,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-bartlomiej-fijalkowski-480.avif",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-bartlomiej-fijalkowski-800.avif",
+        "width": 800
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-bartlomiej-fijalkowski-480.webp",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-bartlomiej-fijalkowski-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "assets/drivers/photo-blazej-bogucki.jpg": {
+    "width": 520,
+    "height": 650,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-blazej-bogucki-480.avif",
+        "width": 480
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-blazej-bogucki-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "assets/drivers/photo-kacper-cyganowski.jpg": {
+    "width": 800,
+    "height": 1000,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-kacper-cyganowski-480.avif",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-kacper-cyganowski-800.avif",
+        "width": 800
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-kacper-cyganowski-480.webp",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-kacper-cyganowski-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "assets/drivers/photo-kacper-slabisz.jpg": {
+    "width": 800,
+    "height": 1000,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-kacper-slabisz-480.avif",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-kacper-slabisz-800.avif",
+        "width": 800
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-kacper-slabisz-480.webp",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-kacper-slabisz-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "assets/drivers/photo-kajetan-jaszczak.jpg": {
+    "width": 700,
+    "height": 875,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-kajetan-jaszczak-480.avif",
+        "width": 480
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-kajetan-jaszczak-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "assets/drivers/photo-marcel-lipski.jpg": {
+    "width": 800,
+    "height": 1000,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-marcel-lipski-480.avif",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-marcel-lipski-800.avif",
+        "width": 800
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-marcel-lipski-480.webp",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-marcel-lipski-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "assets/drivers/photo-mateusz-kramarczyk.jpg": {
+    "width": 490,
+    "height": 612,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-mateusz-kramarczyk-480.avif",
+        "width": 480
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-mateusz-kramarczyk-480.webp",
+        "width": 480
+      }
+    ]
+  },
+  "assets/drivers/photo-piotr-kochanowicz.jpg": {
+    "width": 800,
+    "height": 1000,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-piotr-kochanowicz-480.avif",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-piotr-kochanowicz-800.avif",
+        "width": 800
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-piotr-kochanowicz-480.webp",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-piotr-kochanowicz-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "assets/drivers/photo-piotr-koziol.jpg": {
+    "width": 800,
+    "height": 1000,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-piotr-koziol-480.avif",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-piotr-koziol-800.avif",
+        "width": 800
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-piotr-koziol-480.webp",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-piotr-koziol-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "assets/drivers/photo-przemek-fabis.jpg": {
+    "width": 800,
+    "height": 1000,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-przemek-fabis-480.avif",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-przemek-fabis-800.avif",
+        "width": 800
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-przemek-fabis-480.webp",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-przemek-fabis-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "assets/drivers/photo-wiktor-kocieda.jpg": {
+    "width": 800,
+    "height": 1000,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-wiktor-kocieda-480.avif",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-wiktor-kocieda-800.avif",
+        "width": 800
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-wiktor-kocieda-480.webp",
+        "width": 480
+      },
+      {
+        "src": "assets/optimized/drivers/photo-wiktor-kocieda-800.webp",
+        "width": 800
+      }
+    ]
+  },
+  "assets/drivers/photo-wiktor-nejfi.jpg": {
+    "width": 340,
+    "height": 425,
+    "avif": [],
+    "webp": []
+  },
+  "assets/drivers/photo-wiktor-siedlecki.jpg": {
+    "width": 400,
+    "height": 500,
+    "avif": [],
+    "webp": []
+  },
+  "assets/drivers/photo-wojciech-niemiec.jpg": {
+    "width": 560,
+    "height": 700,
+    "avif": [
+      {
+        "src": "assets/optimized/drivers/photo-wojciech-niemiec-480.avif",
+        "width": 480
+      }
+    ],
+    "webp": [
+      {
+        "src": "assets/optimized/drivers/photo-wojciech-niemiec-480.webp",
+        "width": 480
       }
     ]
   },
@@ -1076,30 +984,6 @@ export const imageManifest = {
       },
       {
         "src": "assets/optimized/drivers/turner-smith-800.webp",
-        "width": 800
-      }
-    ]
-  },
-  "assets/drivers/wiktor-burek.jpg": {
-    "width": 960,
-    "height": 960,
-    "avif": [
-      {
-        "src": "assets/optimized/drivers/wiktor-burek-480.avif",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/wiktor-burek-800.avif",
-        "width": 800
-      }
-    ],
-    "webp": [
-      {
-        "src": "assets/optimized/drivers/wiktor-burek-480.webp",
-        "width": 480
-      },
-      {
-        "src": "assets/optimized/drivers/wiktor-burek-800.webp",
         "width": 800
       }
     ]
@@ -1846,27 +1730,35 @@ export const imageManifest = {
       }
     ]
   },
-  "assets/hero-vistula-racing.png": {
-    "width": 1896,
-    "height": 830,
+  "assets/hero-vistula-lemans.jpg": {
+    "width": 2201,
+    "height": 1231,
     "avif": [
       {
-        "src": "assets/optimized/assets/hero-vistula-racing-800.avif",
+        "src": "assets/optimized/assets/hero-vistula-lemans-800.avif",
         "width": 800
       },
       {
-        "src": "assets/optimized/assets/hero-vistula-racing-1280.avif",
+        "src": "assets/optimized/assets/hero-vistula-lemans-1280.avif",
         "width": 1280
+      },
+      {
+        "src": "assets/optimized/assets/hero-vistula-lemans-1920.avif",
+        "width": 1920
       }
     ],
     "webp": [
       {
-        "src": "assets/optimized/assets/hero-vistula-racing-800.webp",
+        "src": "assets/optimized/assets/hero-vistula-lemans-800.webp",
         "width": 800
       },
       {
-        "src": "assets/optimized/assets/hero-vistula-racing-1280.webp",
+        "src": "assets/optimized/assets/hero-vistula-lemans-1280.webp",
         "width": 1280
+      },
+      {
+        "src": "assets/optimized/assets/hero-vistula-lemans-1920.webp",
+        "width": 1920
       }
     ]
   },

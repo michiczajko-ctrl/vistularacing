@@ -94,14 +94,13 @@ try {
       overflow: document.documentElement.scrollWidth - window.innerWidth,
       cars: document.querySelectorAll('[data-car-id]').length,
       drivers: document.querySelectorAll('.driver').length,
-      tabs: document.querySelectorAll('[data-programme-tabs] [role="tab"]').length,
       chapters: document.querySelectorAll('.chapter').length,
       results: document.querySelectorAll('.result').length,
       tiles: document.querySelectorAll('.tile').length,
       tiny: [...document.querySelectorAll('body *')].filter((el) => [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) && parseFloat(getComputedStyle(el).fontSize) < 12).length
     }));
     if (layout.overflow > 1) failures.push(`${viewport.name}: poziomy overflow ${layout.overflow}px`);
-    if (layout.cars !== 18 || layout.drivers !== 49 || layout.tabs !== 4 || layout.chapters !== 3 || layout.results !== 23 || layout.tiles !== 11) failures.push(`${viewport.name}: niepełne dane ${JSON.stringify(layout)}`);
+    if (layout.cars !== 18 || layout.drivers !== 50 || layout.chapters !== 3 || layout.results !== 23 || layout.tiles !== 11) failures.push(`${viewport.name}: niepełne dane ${JSON.stringify(layout)}`);
     if (layout.tiny) failures.push(`${viewport.name}: ${layout.tiny} elementów z tekstem < 12px`);
 
     if (viewport.name === '1440') {

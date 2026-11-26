@@ -1,4 +1,6 @@
-import { $ } from './dom.js';
+import { $, $$ } from './dom.js';
+import { site } from '../data/site.js';
+import { renderPeople } from './team.js';
 import { escapeHtml } from './safe.js';
 
 /* Dane przykładowe: podgląd interfejsu VRS Racecontrol, nie prawdziwe wyniki. */
@@ -11,6 +13,33 @@ const field = [
   { no: '09', name: 'Kaszuby Sim Team' }
 ];
 const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+/** Zakładki ARIA: VRS Racecontrol i VR Technologies. */
+export function initRacecontrolTabs({ overlay }) {
+  const list = $('[data-rc-tabs]');
+  if (!list) return;
+  renderPeople($('[data-tech-team]'), site.technologies, overlay);
+  const tabs = $$('[role="tab"]', list);
+  const activate = (active) => tabs.forEach((tab) => {
+    const on = tab === active;
+    tab.setAttribute('aria-selected', String(on));
+    tab.tabIndex = on ? 0 : -1;
+    document.getElementById(tab.getAttribute('aria-controls')).hidden = !on;
+  });
+  list.addEventListener('click', (event) => {
+    const tab = event.target.closest('[role="tab"]');
+    if (tab) activate(tab);
+  });
+  list.addEventListener('keydown', (event) => {
+    const index = tabs.indexOf(event.target);
+    const next = { ArrowRight: index + 1, ArrowLeft: index - 1, Home: 0, End: tabs.length - 1 }[event.key];
+    if (index < 0 || next === undefined) return;
+    event.preventDefault();
+    const tab = tabs[(next + tabs.length) % tabs.length];
+    activate(tab);
+    tab.focus();
+  });
+}
 
 export function renderTower() {
   const root = $('[data-tower]');

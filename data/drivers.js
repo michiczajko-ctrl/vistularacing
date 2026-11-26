@@ -126,7 +126,7 @@ const PL = 'Polska';
 
 /** Uzupełnienia istniejących profili (źródło: baza danych zespołu, 14.11.2026). */
 const patches = {
-  'michal-czajkowski': { nationality: PL, role: 'Founder & Team Principal', tags: ['management'] },
+  'michal-czajkowski': { nationality: PL, role: 'Founder & Team Principal', tags: ['management'], career: [R('2026', 'P2 Le Mans 24H', 'LMP2.')] },
   'jakub-kardas': { nationality: PL, role: 'Deputy Team Principal & Driver', joined: 'Od początku', tags: ['management'], career: [R('2026', 'P2 Le Mans 24H', 'LMP2, po 22 godzinach jazdy solo.'), R('2026', 'Wicemistrz HEC Hypercar')] },
   'krystian-ogorzelski': { nationality: PL, role: 'Management · były kierowca', joined: 'Od początku', tags: ['management'], career: [R('2026', 'Mistrz HEC LMGT3'), R('2026', 'Zwycięstwo Imola 4H', 'LMGT3.')] },
   'fabian-dusek': { nationality: PL, joined: 'Listopad 2025', career: [R('2026', 'Wicemistrz HEC LMGT3'), R('2026', 'P1 Last to First COTA 6H')] },
@@ -163,12 +163,12 @@ const newcomers = [
   ['janek-feldman', 'Janek „Franek” Feldman', '95', PL, 'Q3 2026', {}, [R('2026', 'Zwycięstwo Portimão 4H', 'Split 1.'), R('2026', 'Zwycięstwo Le Mans 12H')]],
   ['jim-storey', 'Jim „Gustav” Storey', '86', 'Wielka Brytania', 'Q4 2026'],
   ['julian-moryn', 'Julian Moryń', '88', PL, 'Q3 2026', {}, [R('2026', 'P4 Le Mans 24H')]],
+  ['juliusz-kiwalski', 'Juliusz Kiwalski', '-', null, null, {}, [R('2026', 'Zwycięstwo Le Mans 24H', 'Hypercar.')]],
   ['kajetan-jaszczak', 'Kajetan Jaszczak', '04', PL, 'Q4 2026', {}, [R('2026', 'P4 Le Mans 24H')]],
   ['kamil-kucharczyk', 'Kamil Kucharczyk', '42', PL, 'Q4 2026'],
   ['marcel-lipski', 'Marcel „stolarz” Lipski', '74', PL, 'Q3 2026', { role: 'Driver · Management VVS', tags: ['management'] }, [R('2026', 'P18 Le Mans 24H')]],
   ['mateusz-mironczuk', 'Mateusz „Mirosław” Mirończuk', '11', PL, 'Q3/Q4 2026', {}, [R('2026', 'Zwycięstwo Le Mans 24H')]],
   ['mateusz-dziebak', 'Mateusz Dziębak', '20', PL, 'Q3 2026'],
-  ['mateusz-mrozik', 'Mateusz Mrozik', '41', PL, 'Q4 2026'],
   ['ondra-fort', 'Ondra Fort', '22', 'Czechy', 'Q4 2026', {}, [R('2026', 'P4 Le Mans 24H')]],
   ['oskar-potapiuk', 'Oskar Potapiuk', '11', PL, 'Q3 2026'],
   ['piotr-kochanowicz', 'Piotr „Garfield” Kochanowicz', '84', PL, 'Q3 2026', { role: 'Driver · Management VVS i M-Helper', tags: ['management'] }, [R('2026', 'Zwycięstwo Le Mans 24H')]],
@@ -183,14 +183,26 @@ const newcomers = [
   nationality, joined, career, tags: extra.tags || []
 }));
 
+/** Zdjęcia od kierowców: assets/drivers/photo-<id>.jpg. Zastępują wcześniejsze grafiki. */
+const photos = new Set(['kacper-slabisz', 'mateusz-kramarczyk', 'przemek-fabis', 'wojciech-niemiec', 'wiktor-nejfi', 'wiktor-kocieda', 'bartek-smolak', 'kacper-cyganowski', 'bartlomiej-fijalkowski', 'piotr-kochanowicz', 'blazej-bogucki', 'piotr-koziol', 'marcel-lipski', 'wiktor-siedlecki', 'kajetan-jaszczak']);
+const withPhoto = (driver) => {
+  if (!photos.has(driver.id)) return driver;
+  const photo = `assets/drivers/photo-${driver.id}.jpg`;
+  return { ...driver, photo, sceneImage: photo };
+};
+
+/** Transfery i obecne zespoły: napis na karcie (opcjonalny) i tekst w profilu. */
+const transfers = {
+  'mateusz-mironczuk': { badge: 'Transfer do Aqua Flames', note: 'Transfer do Aqua Flames Simracing na sezon 2027.' },
+  'dawid-podpirko': { badge: 'Koniec kariery 2027', note: 'Dawid kończy karierę na rok 2027. Dzięki za każde okrążenie w barwach Vistuli i powodzenia we wszystkim, co przed Tobą! Zespół Vistula Racing' },
+  'filip-mazgaj': { badge: 'Transfer do Vision', note: 'Filip przechodzi do Vision Performance. Dzięki za każde okrążenie w barwach Vistuli! Przed Tobą nowy rozdział: ciśnij, rozwijaj się i sięgaj po swoje. Trzymamy kciuki! Zespół Vistula Racing' },
+  'piotrek-schabowski': { badge: 'Transfer do Vision', note: 'Piotrek przechodzi do Vision Performance. Dzięki za wspólną jazdę! Niech w nowych barwach każdy stint będzie lepszy od poprzedniego. Powodzenia, kibicujemy Ci! Zespół Vistula Racing' },
+  'przemek-fabis': { badge: null, note: 'Transfer do Simline Rivals Racing Team na sezon 2027.' },
+  'krystian-ogorzelski': { badge: null, note: 'Kierowca Wielgo Racing.' }
+};
+const withTransfer = (driver) => (transfers[driver.id] ? { ...driver, transfer: transfers[driver.id] } : driver);
+
 export const drivers = [
   ...baseDrivers.map((driver) => ({ ...driver, ...(patches[driver.id] || {}) })),
   ...newcomers
-];
-
-export const programLabels = Object.freeze({
-  hy: 'Hypercar',
-  lmp2: 'LMP2',
-  lmp3: 'LMP3',
-  gt3: 'LMGT3'
-});
+].map(withPhoto).map(withTransfer);

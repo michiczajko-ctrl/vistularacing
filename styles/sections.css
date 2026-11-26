@@ -155,7 +155,7 @@
   color: var(--blue-bright);
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 80rem) {
   .site-nav {
     display: flex;
   }
@@ -285,7 +285,7 @@
   text-underline-offset: 0.15em;
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 80rem) {
   .hero__band-inner {
     grid-template-columns: 1fr auto;
     align-items: end;
@@ -729,124 +729,6 @@ button.person:hover {
   border-color: var(--accent);
 }
 
-.programme {
-  display: grid;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.programme__car {
-  display: grid;
-  gap: 1.25rem;
-  padding: 0;
-  overflow: hidden;
-}
-
-.programme__media {
-  background: var(--blue);
-  aspect-ratio: 16 / 10;
-}
-
-.programme__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.programme__media.is-cutout img {
-  padding: 6% 4%;
-  object-fit: contain;
-}
-
-.programme__copy {
-  display: grid;
-  gap: 0.5rem;
-  padding: 0 1.5rem 1.5rem;
-}
-
-.programme__copy h3 {
-  font-size: var(--fs-h3);
-  letter-spacing: var(--track-title);
-}
-
-.programme__copy h3 span {
-  color: var(--accent);
-}
-
-.programme__copy p {
-  color: var(--muted);
-}
-
-.programme__roster header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.programme__roster h4 {
-  font-size: 1.25rem;
-  letter-spacing: var(--track-title);
-}
-
-.programme__roster header span {
-  color: var(--muted);
-  font-size: var(--fs-sm);
-}
-
-.roster__row {
-  display: grid;
-  grid-template-columns: 3rem 1fr auto;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  min-height: 4rem;
-  padding: 0.5rem 0.25rem;
-  border: 0;
-  border-top: 1px solid var(--hairline);
-  background: none;
-  color: var(--fg);
-  text-align: left;
-  transition: background-color var(--dur-fast) var(--ease);
-}
-
-.roster__row:hover {
-  background: var(--surface);
-}
-
-.roster__row img {
-  width: 3rem;
-  height: 3rem;
-  object-fit: cover;
-  object-position: center 15%;
-  background: var(--sky-200);
-}
-
-.roster__row strong {
-  display: block;
-}
-
-.roster__row small {
-  color: var(--muted);
-}
-
-.roster__num {
-  color: var(--accent);
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-}
-
-@media (min-width: 64rem) {
-  .programme {
-    grid-template-columns: 1.15fr 1fr;
-    align-items: start;
-    gap: 3rem;
-  }
-}
-
 .drivers {
   margin-top: clamp(4rem, 9vw, 7rem);
 }
@@ -856,6 +738,19 @@ button.person:hover {
 }
 
 /* Karta kierowcy: portret 4:5, nazwisko wersalikami na zdjęciu, numer startowy w rogu. */
+
+.sim { margin-top: clamp(2.5rem, 6vw, 4rem); }
+.sim__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--blue-bright); }
+.sim__head h3 { font-size: var(--fs-h3); }
+.sim__head p { color: var(--muted); font-size: var(--fs-sm); }
+.sim__squad { margin: 2rem 0 0.75rem; font-size: 1.125rem; }
+
+.staff__title { margin: clamp(2.5rem, 6vw, 4rem) 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--blue-bright); font-size: var(--fs-h3); }
+.staff__group { margin: 1.5rem 0 0.75rem; color: var(--muted); font-size: 1.125rem; }
+.driver__transfer { justify-self: start; padding: 0.2rem 0.4rem; background: var(--blue-bright); color: var(--ink); font-size: var(--fs-xs); font-style: normal; font-weight: 700; line-height: 1.2; text-transform: uppercase; }
+.detail__transfer { margin-bottom: 1.5rem; padding-left: 0.75rem; border-left: 3px solid var(--blue-bright); font-weight: 600; }
+.rc-tabs { margin-bottom: 2.5rem; }
+.rc-tech__title { font-size: var(--fs-h3); }
 
 .drivers__grid {
   display: grid;
@@ -868,11 +763,6 @@ button.person:hover {
   grid-template-rows: 1fr auto;
   background: var(--ink);
   color: var(--text-light);
-}
-
-.driver.is-selected {
-  outline: 3px solid var(--red);
-  outline-offset: 0;
 }
 
 .driver__open {
@@ -946,10 +836,6 @@ button.person:hover {
 .driver__text small {
   color: var(--muted-on-dark);
   font-size: var(--fs-xs);
-}
-
-.drivers__more {
-  margin-top: 1.5rem;
 }
 
 @media (min-width: 64rem) {
@@ -1667,6 +1553,7 @@ button.person:hover {
 .detail__shell {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   max-height: calc(100dvh - 1.5rem);
   overflow-y: auto;
 }
@@ -2100,39 +1987,6 @@ button.person:hover {
 
 /* Loading */
 
-.loader {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: grid;
-  place-content: center;
-  gap: 1.25rem;
-  background: #000;
-  transition: opacity 0.4s;
-}
-
-.loader.is-done {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.loader span {
-  color: var(--blue-bright);
-  font-family: var(--font-display);
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  text-shadow: var(--blue-neon-glow);
-}
-
-.loader i {
-  display: block;
-  height: 2px;
-  background: var(--blue-bright);
-  box-shadow: var(--blue-neon-glow);
-  transform-origin: left;
-  animation: loader-bar 1.2s ease-in-out infinite;
-}
-
 @keyframes loader-bar {
   0% {
     transform: scaleX(0);
@@ -2140,16 +1994,6 @@ button.person:hover {
 
   100% {
     transform: scaleX(1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .loader i {
-    animation: none;
-  }
-
-  .loader {
-    transition: none;
   }
 }
 
@@ -2189,3 +2033,9 @@ button.person:hover {
 
 /* Stopka: gigantyczny napis w neonowym obrysie */
 .site-footer__wordmark { margin: 0; padding: 2rem 0 0.5rem; overflow: hidden; text-align: center; white-space: nowrap; user-select: none; font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: clamp(1.5rem, 5.6vw, 8rem); line-height: 0.9; color: transparent; -webkit-text-stroke: 1.5px var(--blue-bright); filter: drop-shadow(0 0 6px rgb(61 165 255 / 0.85)) drop-shadow(0 0 18px rgb(61 165 255 / 0.5)); }
+.site-footer__sponsor { display: flex; justify-content: center; margin-top: 2rem; }
+.site-footer__sponsor img { height: 4.5rem; width: auto; }
+@media (max-width: 40rem) { .site-header .brand span { display: none; } }
+@media (max-width: 40rem) { .drivers__grid .driver__text strong { font-size: 0.75rem; overflow-wrap: anywhere; } .drivers__grid .driver__photo .avatar { font-size: 2.75rem; padding-top: 18%; } }
+.racecontrol__layout { grid-template-columns: minmax(0, 1fr); }
+#racecontrol-title { font-size: clamp(1.7rem, 3.6vw, 3.4rem); }

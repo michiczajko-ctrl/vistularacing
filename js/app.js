@@ -1,6 +1,6 @@
 import { site } from '../data/site.js';
 import { cars, carClassLabels } from '../data/cars.js';
-import { drivers, programLabels } from '../data/drivers.js';
+import { drivers } from '../data/drivers.js';
 import { achievements } from '../data/archive.js';
 import { $, goTo } from './dom.js';
 import { DetailOverlay } from './detail-overlay.js';
@@ -13,7 +13,7 @@ import { renderStats, renderAchievements } from './achievements.js';
 import { initGallery } from './gallery.js';
 import { renderPartners, renderRecruitmentPanel, renderFooter } from './partners.js';
 import { renderSeason, renderRecruitForm, initAnalytics } from './features.js';
-import { renderTower } from './racecontrol.js';
+import { renderTower, initRacecontrolTabs } from './racecontrol.js';
 import { initWow } from './wow.js';
 
 const legacyHashes = { '#about': '#history', '#divisions': '#fleet', '#contact': '#recruitment' };
@@ -30,7 +30,7 @@ const step = (name, fn) => {
 function init() {
   if (legacyHashes[location.hash]) history.replaceState(null, '', `${location.pathname}${location.search}${legacyHashes[location.hash]}`);
 
-  const overlay = new DetailOverlay($('[data-detail-overlay]'), { cars, drivers, achievements, carClassLabels, programLabels });
+  const overlay = new DetailOverlay($('[data-detail-overlay]'), { cars, drivers, achievements, carClassLabels });
 
   step('nav', initNav);
   step('stats', renderStats);
@@ -43,6 +43,7 @@ function init() {
   step('partners', renderPartners);
   step('recruitment', () => { renderRecruitmentPanel(); renderRecruitForm(site); });
   step('racecontrol', renderTower);
+  step('racecontrol-tabs', () => initRacecontrolTabs({ overlay }));
   step('footer', renderFooter);
   step('wow', initWow);
   step('analytics', () => initAnalytics(site));

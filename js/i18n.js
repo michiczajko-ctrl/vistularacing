@@ -9,7 +9,7 @@ const en = {
   /* nawigacja i hero */
   'Zamknij menu': 'Close menu',
   'Otwórz menu': 'Open menu',
-  'Pokaż wszystkich': 'Show all',
+
   /* sekcje (paleta Ctrl+K) */
   'O nas': 'About',
   'Historia': 'History',
@@ -31,6 +31,17 @@ const en = {
   'Wewnętrzny dział oprogramowania, technologii i infrastruktury: VRS Race Control, VRT Pitwall i VRT-SITE.': 'Internal software, technology and infrastructure division: VRS Race Control, VRT Pitwall and VRT-SITE.',
   'Marka suplementów i napojów dla graczy: focus, energia, nawodnienie i sen. „Fuel Better. Push Further. Be ADVANCED."': 'Gaming supplement and drink brand: focus, energy, hydration and sleep. "Fuel Better. Push Further. Be ADVANCED."',
   'Najnowsze podia': 'Latest podiums',
+  'Partner ligowy. 237 League to polska liga simracingowa dla kierowców, którzy chcą ścigać się twardo, ale czysto. Organizuje m.in. Polish Endurance Series.': 'League partner. 237 League is a Polish sim racing league for drivers who want to race hard but clean. It runs, among others, the Polish Endurance Series.',
+  'Rezerwy': 'Reserves',
+  'Transfer do Vision': 'Moving to Vision',
+  'Transfer do Aqua Flames': 'Moving to Aqua Flames',
+  'Koniec kariery 2027': 'Career ends 2027',
+  'Transfer do Aqua Flames Simracing na sezon 2027.': 'Moving to Aqua Flames Simracing for the 2027 season.',
+  'Dawid kończy karierę na rok 2027. Dzięki za każde okrążenie w barwach Vistuli i powodzenia we wszystkim, co przed Tobą! Zespół Vistula Racing': 'Dawid ends his career for 2027. Thank you for every lap in Vistula colours and good luck with everything ahead of you! Vistula Racing team',
+  'Filip przechodzi do Vision Performance. Dzięki za każde okrążenie w barwach Vistuli! Przed Tobą nowy rozdział: ciśnij, rozwijaj się i sięgaj po swoje. Trzymamy kciuki! Zespół Vistula Racing': 'Filip is moving to Vision Performance. Thank you for every lap in Vistula colours! A new chapter is ahead of you: push, keep growing and go get what is yours. Fingers crossed! Vistula Racing team',
+  'Piotrek przechodzi do Vision Performance. Dzięki za wspólną jazdę! Niech w nowych barwach każdy stint będzie lepszy od poprzedniego. Powodzenia, kibicujemy Ci! Zespół Vistula Racing': 'Piotrek is moving to Vision Performance. Thank you for racing with us! May every stint in your new colours be better than the last. Good luck, we are cheering for you! Vistula Racing team',
+  'Transfer do Simline Rivals Racing Team na sezon 2027.': 'Moving to Simline Rivals Racing Team for the 2027 season.',
+  'Kierowca Wielgo Racing.': 'Wielgo Racing driver.',
   'Oficjalny drugi sponsor Vistula Racing.': 'Official second sponsor of Vistula Racing.',
   /* liczby */
   'Zwycięstwa': 'Wins',

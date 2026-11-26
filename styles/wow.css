@@ -1,6 +1,6 @@
 /*
  * Ruch. Każda animacja ma jedno zadanie:
- * intro lights-out = start wyścigu (narracja), pasek postępu = orientacja, słowa tytułu = hierarchia,
+ * pasek postępu = orientacja, słowa tytułu = hierarchia,
  * parallax hero = głębia przy wejściu w stronę, ticker = jedyny na stronie, poświata i tilt = informacja zwrotna na hover.
  * Scroll obsługuje CSS scroll-driven animations (bez nasłuchu zdarzeń scroll).
  */
@@ -29,24 +29,8 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* ---- intro: start lights ---- */
-  html.is-intro { overflow: hidden; }
-  .intro { position: fixed; inset: 0; z-index: 300; display: grid; place-content: center; gap: 2rem; justify-items: center; background: var(--ink); animation: intro-lift 750ms cubic-bezier(0.76, 0, 0.24, 1) 2.15s forwards; }
-  .intro p { color: var(--muted); font-family: var(--font-display); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; animation: intro-fade 400ms ease 1.85s forwards; }
-  .intro__lights { display: flex; gap: clamp(0.5rem, 2vw, 1.25rem); padding: 1.25rem 1.5rem; background: var(--navy-950); }
-  .intro__lights i { width: clamp(2rem, 7vw, 4rem); height: clamp(2rem, 7vw, 4rem); border-radius: 50%; background: #0e1530; animation: light-on 160ms ease forwards, light-off 100ms ease 1.75s forwards; }
-  .intro__lights i:nth-child(1) { animation-delay: 0.25s, 1.75s; }
-  .intro__lights i:nth-child(2) { animation-delay: 0.5s, 1.75s; }
-  .intro__lights i:nth-child(3) { animation-delay: 0.75s, 1.75s; }
-  .intro__lights i:nth-child(4) { animation-delay: 1s, 1.75s; }
-  .intro__lights i:nth-child(5) { animation-delay: 1.25s, 1.75s; }
-  @keyframes light-on { to { background: var(--blue-bright); } }
-  @keyframes light-off { to { background: #0e1530; } }
-  @keyframes intro-fade { to { opacity: 0; } }
-  @keyframes intro-lift { to { transform: translateY(-100%); } }
-
   /* ---- hero ---- */
-  .js-split .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+  .js-split .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.12em 0.12em; margin: 0 -0.12em -0.12em; }
   .js-split .w > span { display: inline-block; transform: translateY(115%); transition: transform 1000ms var(--ease-out) calc(var(--i, 0) * 110ms + 120ms); }
   .is-ready .js-split .w > span { transform: none; }
   .js-split ~ .hero__lead, .js-split ~ .hero__actions { opacity: 0; transform: translateY(1.25rem); transition: opacity 800ms var(--ease-out) 0.9s, transform 800ms var(--ease-out) 0.9s; }
@@ -81,13 +65,15 @@ html.is-locked .site-header:not(.is-scrolled) { background: var(--ink); }
 
 .hero { min-height: 100svh; }
 .hero__media::after { background:
+  linear-gradient(180deg, rgb(4 6 11 / 0.82) 0%, rgb(4 6 11 / 0.55) 28%, transparent 48%),
   radial-gradient(120% 90% at 70% 35%, transparent 40%, rgb(4 6 11 / 0.55) 100%),
-  linear-gradient(0deg, var(--ink) 0%, rgb(4 6 11 / 0.82) 22%, rgb(4 6 11 / 0) 62%),
+  linear-gradient(0deg, var(--ink) 0%, rgb(4 6 11 / 0.6) 22%, rgb(4 6 11 / 0) 55%),
   linear-gradient(90deg, rgb(4 6 11 / 0.78) 0%, rgb(4 6 11 / 0.25) 55%, transparent 80%); }
 
 .hero__eyebrow { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.5rem; color: var(--blue-bright); font-family: var(--font-sans); font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
 .hero__eyebrow::before { content: ''; width: 2.5rem; height: 1px; background: currentColor; }
-.hero h1 { font-weight: 900; font-stretch: 125%; text-shadow: 0 2px 40px rgb(4 6 11 / 0.5); overflow-wrap: break-word; }
+.hero h1 { font-weight: 900; font-stretch: 125%; overflow-wrap: break-word; }
+@media (max-width: 40rem) { .hero__media img { object-position: 50% 40%; } }
 .hero__lead { max-width: 32rem; color: #d3dcf0; }
 .hero__content { padding-bottom: clamp(2.5rem, 6vw, 5rem); }
 
@@ -132,3 +118,25 @@ html.is-locked .site-header:not(.is-scrolled) { background: var(--ink); }
 .stage__brand { min-height: 2.25rem; display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--muted); font-size: var(--fs-sm); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .stage__brand img { height: 2.25rem; width: auto; max-width: 7rem; filter: brightness(0) invert(1); }
 .fleet-item__brand { height: 1rem; width: 2.5rem; object-fit: contain; object-position: left; filter: brightness(0) invert(1); opacity: 0.8; vertical-align: -0.15em; margin-right: 0.4rem; }
+
+/* Przemek Fabiś: płomienna ramka rosnąca od dołu po najechaniu (i przy fokusie) */
+:is(.person[data-management-driver="przemek-fabis"], .driver:has([data-driver-id="przemek-fabis"]))::after {
+  content: ''; position: absolute; inset: 0; z-index: 3; padding: 3px; pointer-events: none;
+  background: repeating-linear-gradient(0deg, #b81d00 0, #ff6a00 1.5rem, #ffd23f 2.25rem, #ff8a1f 3rem, #b81d00 4.5rem) 0 0 / 100% 4.5rem;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  clip-path: inset(100% 0 0 0); transition: clip-path 1400ms var(--ease);
+}
+:is(.person[data-management-driver="przemek-fabis"], .driver:has([data-driver-id="przemek-fabis"])) strong { transition: color 600ms var(--ease); }
+.person[data-management-driver="przemek-fabis"]:focus-visible::after, .driver:has([data-driver-id="przemek-fabis"]:focus-visible)::after { clip-path: inset(0); }
+.person[data-management-driver="przemek-fabis"]:focus-visible strong, [data-driver-id="przemek-fabis"]:focus-visible strong { color: #ff8a1f; }
+@media (hover: hover) {
+  .person[data-management-driver="przemek-fabis"]:hover::after, .driver:has([data-driver-id="przemek-fabis"]):hover::after { clip-path: inset(0); }
+  .person[data-management-driver="przemek-fabis"]:hover strong, .driver:hover [data-driver-id="przemek-fabis"] strong { color: #ff8a1f; }
+}
+.detail__transfer[data-transfer="przemek-fabis"] { color: #ff8a1f; border-left-color: #ff8a1f; }
+@media (prefers-reduced-motion: no-preference) {
+  :is(.person[data-management-driver="przemek-fabis"], .driver:has([data-driver-id="przemek-fabis"]))::after { animation: flame-rise 2400ms linear infinite, flame-flicker 900ms ease-in-out infinite alternate; }
+  @keyframes flame-rise { to { background-position: 0 -4.5rem; } }
+  @keyframes flame-flicker { 0% { filter: brightness(0.9); } 40% { filter: brightness(1.2); } 70% { filter: brightness(1); } 100% { filter: brightness(1.15); } }
+}

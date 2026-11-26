@@ -1,9 +1,8 @@
 import { $ } from './dom.js';
 
 /*
- * Ruch sterowany z JS: intro lights-out, słowa tytułu w maskach, poświata i tilt za kursorem.
+ * Ruch sterowany z JS: słowa tytułu w maskach, poświata i tilt za kursorem.
  * Scroll (pasek postępu, parallax) robi CSS scroll-driven animations w styles/wow.css.
- * Intro pomijamy dla automatów (navigator.webdriver), żeby testy nie czekały na animację.
  */
 const media = (query) => window.matchMedia?.(query).matches ?? false;
 const reduce = () => media('(prefers-reduced-motion: reduce)');
@@ -40,22 +39,6 @@ function splitWords(el) {
   el.setAttribute('aria-label', label);
   walk(el);
   el.classList.add('js-split');
-}
-
-/** Start-lights: pięć świateł gaśnie jak na starcie wyścigu, kurtyna odjeżdża w górę. Raz na sesję. */
-function intro() {
-  const root = document.documentElement;
-  let seen = false;
-  try { seen = sessionStorage.getItem('vrt-intro') === '1'; sessionStorage.setItem('vrt-intro', '1'); } catch { /* tryb prywatny */ }
-  if (seen || navigator.webdriver) { root.classList.add('is-ready'); return; }
-  const el = document.createElement('div');
-  el.className = 'intro';
-  el.setAttribute('aria-hidden', 'true');
-  el.innerHTML = '<div class="intro__lights"><i></i><i></i><i></i><i></i><i></i></div><p>Vistula Racing</p>';
-  document.body.append(el);
-  root.classList.add('is-intro');
-  setTimeout(() => { root.classList.add('is-ready'); }, 2150);
-  setTimeout(() => { el.remove(); root.classList.remove('is-intro'); }, 3000);
 }
 
 const GLOW = '.person, .legend, .tower, .driver';
@@ -98,9 +81,10 @@ export function initWow() {
   progressBar();
   headerState();
   if (reduce()) { document.documentElement.classList.add('is-ready'); return; }
-  intro();
   const title = $('.hero h1');
   if (title) splitWords(title);
+  // dwie klatki przerwy, żeby przejście słów tytułu wystartowało
+  requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('is-ready')));
   if (finePointer()) pointerEffects();
 }
 

@@ -6,6 +6,7 @@ import sharp from 'sharp';
 import { site, history } from '../data/site.js';
 import { cars, brandLogos } from '../data/cars.js';
 import { drivers } from '../data/drivers.js';
+import { squads } from '../data/squads.js';
 import { achievements, raceResults, podiums, gallery, partners } from '../data/archive.js';
 import { imageManifest } from '../data/image-manifest.js';
 import { historyEn } from '../data/site.en.js';
@@ -50,6 +51,18 @@ assert(new Set(cars.map((car) => `${car.manufacturer}:${car.model}`)).size === 1
 
 const carIds = new Set(cars.map((car) => car.id));
 const driverIds = new Set(drivers.map((driver) => driver.id));
+
+[...Object.values(site.staff).flat(), ...site.technologies].forEach((person) => {
+  if (person.driverId) assert(driverIds.has(person.driverId), `${person.name}: nieznany kierowca ${person.driverId}`);
+});
+const lineups = squads.flatMap((sim) => [...sim.teams, { name: `${sim.id} directors`, drivers: sim.directors.map(([, id]) => id) }]);
+lineups.forEach((team) => {
+  assert(new Set(team.drivers).size === team.drivers.length, `Skład ${team.name}: powtórzony kierowca`);
+  team.drivers.forEach((id) => assert(driverIds.has(id), `Skład ${team.name}: nieznany kierowca ${id}`));
+});
+// osoby z VR Technologies mogą mieć profil bez miejsca w składzie
+const assigned = new Set([...squads.flatMap((sim) => sim.teams.flatMap((team) => team.drivers)), ...site.technologies.map((person) => person.driverId)]);
+drivers.forEach((driver) => assert(assigned.has(driver.id), `Kierowca ${driver.id}: brak w składach`));
 
 cars.forEach((car) => {
   fileExists(car.image, `Samochód ${car.id}`);
